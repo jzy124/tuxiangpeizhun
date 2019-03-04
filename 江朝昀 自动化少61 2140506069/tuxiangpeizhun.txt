@@ -1,0 +1,15 @@
+close all;
+clear all;
+clc;
+i1=imread('Image A.jpg');
+i2=imread('Image B.jpg');
+figure(1);
+subplot(121);imshow(i1);title('A');
+subplot(122);imshow(i2);title('B');
+cpselect(i2,i1);
+ 
+H=fitgeotrans(movingPoints,fixedPoints,'affine');
+i2=imwarp(i2,H);
+figure(1);
+subplot(1,2,1),imshow(i2);
+subplot(1,2,2),imshow(i1); 
